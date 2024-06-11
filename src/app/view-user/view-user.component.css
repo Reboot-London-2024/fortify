@@ -1,0 +1,141 @@
+.account-balance {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .sidebar {
+    width: 250px;
+    background-color: #004530;
+    color: #fff;
+    padding: 15px;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    text-underline-position: below;
+  }
+  
+  .sidebar .nav-item {
+    margin-bottom: 10px;
+  }
+  
+  .maincon{
+    margin-left: 10px;
+  }
+
+  .form-switch .form-check-input {
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-switch .form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .form-switch .form-check-input::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  /* .form-switch .form-check-input:checked {
+    background-color: red;
+    border-color: red;
+  } */
+  .form-switch .form-check-input:checked::before {
+    transform: translateX(25px);
+  }
+  
+  .form-switch .form-check-input:not(:checked)::before {
+    background-color: #007bff;
+  }
+  
+  .form-switch .form-check-input:checked::before {
+    background-color: #ccc;
+  }
+  
+
+  .bot{
+    background-color: #004530;
+    color:white;
+  }
+
+
+.vertical-line {
+    border-left: 1px solid black; /* Adjust thickness and color as needed */
+    height: 100vh; /* Adjust height as needed */
+  }
+
+  .botd{
+    background-color: rgb(151, 75, 75);
+    color: wheat;
+  }
+
+  .custom-class {
+    /* Your custom styles here */
+    background-color: grey;
+  }
+
+  .horizontal-line {
+    border-top: 1px solid white; /* Adjust thickness as needed */
+    width: 100%; /* Adjust width as needed */
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #004c9e; /* Lloyds Bank blue */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #004c9e; /* Lloyds Bank blue */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  

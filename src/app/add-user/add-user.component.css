@@ -1,0 +1,217 @@
+.account-balance {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .sidebar {
+    width: 250px;
+    background-color: #004530;
+    color: #fff;
+    padding: 15px;
+  }
+  
+  .sidebar a {
+    color: #fff;
+    text-decoration: none;
+    text-underline-position: below;
+  }
+  
+  .sidebar .nav-item {
+    margin-bottom: 10px;
+  }
+  
+  .maincon{
+    margin-left: 10px;
+  }
+
+  .form-switch .form-check-input {
+    width: 50px;
+    height: 25px;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-switch .form-check-input:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .form-switch .form-check-input::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  /* .form-switch .form-check-input:checked {
+    background-color: red;
+    border-color: red;
+  } */
+  .form-switch .form-check-input:checked::before {
+    transform: translateX(25px);
+  }
+  
+  .form-switch .form-check-input:not(:checked)::before {
+    background-color: #007bff;
+  }
+  
+  .form-switch .form-check-input:checked::before {
+    background-color: #ccc;
+  }
+  
+
+  .bot{
+    background-color: #004530;
+    color:white;
+  }
+
+
+.vertical-line {
+    border-left: 1px solid black; /* Adjust thickness and color as needed */
+    height: 100vh; /* Adjust height as needed */
+  }
+
+  .botd{
+    background-color: rgb(151, 75, 75);
+    color: wheat;
+  }
+
+  .custom-class {
+    /* Your custom styles here */
+    background-color: grey;
+  }
+
+  .horizontal-line {
+    border-top: 1px solid white; /* Adjust thickness as needed */
+    width: 100%; /* Adjust width as needed */
+  }
+
+
+  .permission-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #004530;
+  }
+  
+  .section {
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #004530;
+     }
+  
+  .subsection {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  input[type="checkbox"],
+  input[type="text"] {
+    margin-right: 10px;
+  }
+  
+  /* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  /* Checked state */
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Focused state */
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  /* button {
+    display: block;
+    background-color: #004530;
+    color:white; 
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  } 
+  
+   button:hover {
+    background-color: #003366;
+  }
+  
+  button[type="button"] {
+    width: auto;
+    background-color: #004530;
+    color:white;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #004530;
+    color:white;
+  } */
+  

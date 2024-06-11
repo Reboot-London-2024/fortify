@@ -1,0 +1,333 @@
+<div class="d-flex">
+    <div class="sidebar">
+      <h4>Our Products and Services</h4>
+      <div class="horizontal-line"></div>
+
+      <ul class="nav flex-column">
+        <li class="nav-item" *ngFor="let item of navItems">
+          <a href="#" class="nav-link" (click)="toggleSection($event, item)">
+            {{item.name}} <span class="float-right" *ngIf="!item.expanded">+</span><span class="float-right" *ngIf="item.expanded">-</span>
+          </a>
+          <div *ngIf="item.expanded">
+            <ul class="nav flex-column ml-3">
+              <li class="nav-item" *ngFor="let subItem of item.subItems">
+                <a href="#" class="nav-link" (click)="selectSubItem($event, subItem)">{{subItem}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="horizontal-line"></div>
+
+        </li>
+
+      </ul>
+    </div>
+    <div  class="maincon main-content flex-grow-1">
+        <div *ngIf="!selectedSubItem">
+      <h2>Welcome, Mr S. Ghosh</h2>
+      <p>Last logged on 01 June 24 at 05:24 PM</p>
+      <div class="account-balance">
+        <strong>Classic</strong> 10-06-38 81888263<br>
+        <strong>£906.91</strong>
+      </div>
+      <a href="#">Send money outside the UK</a>
+      <hr>
+      <h3>You're highly likely to be approved</h3>
+      <p>Interested in a credit card? Use our eligibility checker to find out more before you apply.</p>
+      <a href="#" class="btn bot">Check now</a>
+    </div>
+      <hr>
+      <div *ngIf="selectedSubItem">
+        <h4>Trusted Access</h4>
+        <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-5">
+                <!-- Step Components -->
+                <div *ngIf="currentStep === 6">
+                    <p>Trusted User is added for this account</p>
+                    </div>
+                <div *ngIf="currentStep === 1">
+                    <div class="" style="padding-left: 50px;">
+                        <button class=" bot btn-primary"  style="padding-left: 10px;padding-right: 50px;" (click)="nextStep(2)">Add a trusted user</button>
+                    </div>
+
+                </div>
+          
+                <div *ngIf="currentStep === 2">
+                  <div class="card mb-3" *ngFor="let option of accessOptions">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ option.title }}</h5>
+                      <p class="card-text">{{ option.details }}</p>
+                      <p *ngIf="option.title === 'Emergency Access'"> Time in days: 
+
+                        <input type="text" class="col-8" id="time"  name="time" required>
+
+                      </p>
+                      <button class="bot btn btn-secondary" (click)="toggleOption(option.title)">
+                        {{ isSelected(option.title) ? 'On' : 'Off' }}
+                      </button>
+                    </div>
+                  </div>
+                  <br>
+                  <button class="bot btn-primary" style="float: right;" (click)="nextStep(3)">Next</button>
+                </div>
+          
+                <div *ngIf="currentStep === 3">
+                  <form (ngSubmit)="nextStep(4)">
+                    <div class="form-group row">
+                      <label for="name" class="col-3">Name : </label>
+                      <input type="text" class="col-8" id="name" [(ngModel)]="userData.name" name="name" required>
+                    
+                    </div>
+                    <div class="form-group row mt-2">
+                      <label for="email" class="col-3" >Email : </label>
+                      <input type="email" class="col-8" id="email" [(ngModel)]="userData.email" name="email" required>
+                    </div>
+                    <div class="form-group row mt-2">
+                      <label for="idType" class="col-3">ID Type : </label>
+                      <input type="text" class="col-8" id="idType" [(ngModel)]="userData.idType" name="idType" required>
+                    </div>
+                    <div class="form-group row mt-2">
+                      <label for="idNumber" class="col-4" >Phone Number : </label>
+                      <input type="text" class="col-7" id="idNumber" [(ngModel)]="userData.idNumber" name="idNumber" required>
+                    </div>
+                    <div class="form-group row mt-2" >
+                      <label for="relation" class="col-3">Relation : </label>
+                      <input type="text" class="col-8" id="relation" [(ngModel)]="userData.relation" name="relation" required>
+                    </div>
+                    <div class="form-group row mt-2" >
+                      <label for="address" class="col-3 ">Address : </label>
+                      <input type="text" class="col-8" id="address" [(ngModel)]="userData.address" name="address" required>
+                    </div>
+                    <br>
+                    <button  class="bot btn-primary" style="float: right;"  type="submit">Next</button>
+                  </form>
+                </div>
+          
+                <div *ngIf="currentStep === 4">
+                  <!-- <div class="form-check" *ngFor="let option of permissionOptions">
+                    <input class="form-check-input" type="checkbox" [id]="option.id" [(ngModel)]="userData[option.id]" [disabled]="option.disabled">
+                    <label class="form-check-label" [for]="option.id">{{ option.label }}</label>
+                  </div>
+                  <div class="form-group" *ngIf="userData.transactionAccess">
+                    <label for="transactionLimit">Transaction Limit</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="transactionLimit"
+                      [(ngModel)]="userData.transactionLimit"
+                      [disabled]="!userData.transactionAccess"
+                    />
+                  </div> -->
+
+                  <div class="section">
+                    <h3>
+                      Balance 
+                      <button type="button" (click)="toggleSection1('balance')">
+                        {{ sections.balance ? '-' : '+' }}
+                      </button>
+                    </h3>
+                    <div *ngIf="sections.balance">
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="balanceView" [(ngModel)]="permissions.balanceView"> View Only
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Transaction Section -->
+                  <div class="section">
+                    <h3>
+                      Transaction 
+                      <button type="button" (click)="toggleSection1('transaction')">
+                        {{ sections.transaction ? '-' : '+' }}
+                      </button>
+                    </h3>
+                    <div *ngIf="sections.transaction">
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="transactionView" [(ngModel)]="permissions.transactionView"> View
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Pay and Transfer Section -->
+                  <div class="section">
+                    <h3>
+                      Pay and Transfer 
+                      <button type="button" (click)="toggleSection1('pay')">
+                        {{ sections.pay ? '-' : '+' }}
+                      </button>
+                    </h3>
+                    <div *ngIf="sections.pay">
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="paySetup" [(ngModel)]="permissions.paySetup"> Setup
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="payDomestic" [(ngModel)]="permissions.payDomestic"> Domestic Only
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="payAll" [(ngModel)]="permissions.payAll"> All Transactions
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                            Set Limit
+                          <input type="text" name="payLimit" [(ngModel)]="permissions.payLimit" placeholder="Limit">
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="payApproval" [(ngModel)]="permissions.payApproval"> Approval Required
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Credit and Mortgage and Direct Debit Section -->
+                  <div class="section">
+                    <h3>
+                      Credit and Mortgage and Direct Debit 
+                      <button type="button" (click)="toggleSection1('credit')">
+                        {{ sections.credit ? '-' : '+' }}
+                      </button>
+                    </h3>
+                    <div *ngIf="sections.credit">
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="creditView" [(ngModel)]="permissions.creditView"> View Only
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="creditManage" [(ngModel)]="permissions.creditManage"> Manage
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                            Set Max Limit
+                          <input type="text" name="creditMaxLimit" [(ngModel)]="permissions.creditMaxLimit" placeholder="Max Limit">
+                          
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="creditApproval" [(ngModel)]="permissions.creditApproval"> Approval Required
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Spending Insights Section -->
+                  <div class="section">
+                    <h3>
+                      Spending Insights 
+                      <button type="button" (click)="toggleSection1('spending')">
+                        {{ sections.spending ? '-' : '+' }}
+                      </button>
+                    </h3>
+                    <div *ngIf="sections.spending">
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="spendingView" [(ngModel)]="permissions.spendingView"> View
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Investments Section -->
+                  <div class="section">
+                    <h3>
+                      Investments 
+                      <button type="button" (click)="toggleSection1('investments')">
+                        {{ sections.investments ? '-' : '+' }}
+                      </button>
+                    </h3>
+                    <div *ngIf="sections.investments">
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="investmentsView" [(ngModel)]="permissions.investmentsView"> View
+                        </label>
+                      </div>
+                      <div class="subsection">
+                        <label>
+                          <input type="checkbox" name="investmentsManage" [(ngModel)]="permissions.investmentsManage"> Manage
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <br>
+                  <button class="bot btn-primary" style="float: right;"  (click)="nextStep(5)">Next</button>
+                </div>
+          
+                <div *ngIf="currentStep === 5">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="termsConditions" [(ngModel)]="termsAccepted">
+                    <small class="form-check-label" for="termsConditions">I agree to the terms and conditions</small>
+                  </div>
+                  <br>
+                  <button cclass="btn btn-submit" style="float: right;"  (click)="submitForm()" [disabled]="!termsAccepted">Submit</button>
+                </div>
+              </div>
+          
+              <div class="col-md-1 vertical-line"></div>
+
+              <div class="col-md-4" >
+
+                <div class="" style="padding-left: 50px;">
+                <button class="bot" style="padding-left: 10px;padding-right: 50px;"> Added Truested Access</button>
+                </div>
+                <div style="padding-left: 50px;" *ngIf="!(currentStep === 6)">
+                    <br>
+                    <br>
+                    <h6>No Trusted User Present</h6>
+                    </div>
+
+
+                <div *ngIf="currentStep === 6">
+                <h3>Trusted Access: {{ userData.name }}</h3>
+                <div class="row">
+                    <div class="col-3">   
+                        <button class=" bot btn-info" (click)="toggleDetails()">Expand</button>
+                        </div>
+                    <div class="col-3"> 
+                    <button class="botd btn-danger" (click)="deletes()">Delete</button>
+                     </div>
+                </div>
+                
+
+                <div id="details" *ngIf="showDetails">
+                    <p>Code:2346</p>
+                  <p>Name: {{ userData.name }}</p>
+                  <p>Email: {{ userData.email }}</p>
+                  <p>ID Type: {{ userData.idType }}</p>
+                  <p>ID Number: {{ userData.idNumber }}</p>
+                  <p>Relation: {{ userData.relation }}</p>
+                  <p>Address: {{ userData.address }}</p>
+                  <p>Access: </p>
+                  <div *ngFor="let permission of submittedPermissions | keyvalue">
+                    <p *ngIf=" permission.value  !== false">{{ permission.key }}</p> 
+                    
+
+                  </div>
+                </div>
+            </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+          <!-- // -->
+      </div>
+    </div>
+  </div>
+  

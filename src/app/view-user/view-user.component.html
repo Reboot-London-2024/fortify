@@ -1,0 +1,115 @@
+<div class="d-flex">
+    <div class="sidebar">
+      <h4>Our Products and Services</h4>
+      <div class="horizontal-line"></div>
+
+      <ul class="nav flex-column">
+        <li class="nav-item" *ngFor="let item of navItems">
+          <a href="#" class="nav-link" (click)="toggleSection($event, item)">
+            {{item.name}} <span class="float-right" *ngIf="!item.expanded">+</span><span class="float-right" *ngIf="item.expanded">-</span>
+          </a>
+          <div *ngIf="item.expanded">
+            <ul class="nav flex-column ml-3">
+              <li class="nav-item" *ngFor="let subItem of item.subItems">
+                <a href="#" class="nav-link" (click)="selectSubItem($event, subItem)">{{subItem}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="horizontal-line"></div>
+
+        </li>
+
+      </ul>
+    </div>
+    <div  class="maincon main-content flex-grow-1">
+        <div *ngIf="!selectedSubItem">
+      <h3>Welcome, Mr H. Potter </h3>
+      <p>Last logged on 03 June 24 at 06:54 PM</p>
+      <div class="account-balance">
+        <strong>Classic</strong> 10-45-68 8998263<br>
+        <strong>£5615.22</strong>
+      </div>
+      <a href="#">Send money outside the UK</a>
+      <hr>
+      <h3>You're highly likely to be approved</h3>
+      <p>Interested in a credit card? Use our eligibility checker to find out more before you apply.</p>
+      <a href="#" class="btn bot">Check now</a>
+    </div>
+      <hr>
+      <div *ngIf="selectedSubItem">
+        <h4>Trusted Access</h4>
+        <div class="container mt-1">
+            <div class="row">
+  
+              <div class="col-md-10" >
+<!-- 
+                <div class="" style="padding-left: 50px;">
+                <button class="bot" style="padding-left: 10px;padding-right: 50px;"> View Truested Access</button>
+                </div> -->
+                <div class="row">
+                    <div class="form-container">
+                        <div class="row">
+                            <div class="col-9">
+                        <h3>{{titleT}} </h3>
+                                </div>
+                       <br><br>
+                       <div class="col-3">
+                        <button class=" bot btn-info" (click)="toggleDetails()">Expand</button>
+                    </div>
+                </div>
+                
+                <br>
+
+                <div class="row" id="details" *ngIf="showDetails && !stage1 && !isLogin">
+
+                    
+                        <h5>Enter details to get access</h5>
+                        <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+                            <div class="row">
+                          <div class="form-group col-5">
+                            <input type="text" id="name" name="name" placeholder="Name" ngModel required>
+                          </div>
+                          <div class="form-group col-5">
+                            <input type="email" id="email" name="email" placeholder="Email" ngModel required>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-5">
+                            <input type="text" id="phone" name="phone" placeholder="Phone" ngModel required>
+                          </div>
+                          <div class="form-group col-5">
+                        
+                            <input type="code" id="code" name="code" placeholder="Code" ngModel required>
+                          </div>
+                        </div>
+                          <button class="bot" type="submit" [disabled]="!userForm.form.valid">Submit</button>
+                        </form>
+                        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+                      </div>
+               
+
+                      <div *ngIf="showDetails && stage1 ">
+            
+                  <div *ngFor="let permission of savedPermissions | keyvalue">
+                    <strong *ngIf=" permission.value  !== false">{{ permission.key }}</strong> 
+                    <strong *ngIf=" permission.value  !== false  && permission.value  !== true">: {{ permission.value }}</strong> 
+
+
+                  </div>
+                </div>
+              
+            </div>
+        </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+          <!-- // -->
+      </div>
+    </div>
+  </div>
+  

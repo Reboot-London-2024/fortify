@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <div class="row main">
+        <div  class="col-md-8 mx-auto">
+            <h2 class="mb-4">Welcome to Internet Banking</h2>
+            <p>If you don't already use Internet Banking, it's simple to <a href="#">register online</a>.</p>
+            <div>
+                <div>
+                    <label for="userId">User ID:</label>
+                    <input type="text" class="form-control" [(ngModel)]="userName" id="userName" placeholder="Enter your User ID">
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" placeholder="Enter your Password">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="showPassword">Show</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember my User ID <i class="fas fa-info-circle"></i></label>
+                    <br><small class="form-text text-muted">Warning: Don't tick this box if you're using a public or shared computer</small>
+                </div>
+                <div class="">
+                    <br>
+                    <a href="#">Forgotten your logon details?</a>
+                </div>
+                <br>
+                <button  (click)="login()" class="btn btn-success">Continue</button>
+            </div>
+            <hr>
+            <div class="mt-4">
+                <p>Why not try our secure Mobile Banking app?</p>
+                <p>With our app you get access to lots of extra features to make banking even easier. Things like freeze your card, check your PIN and set your own contactless limit.</p>
+                <a href="#">How to set up the app</a>
+            </div>
+        </div>
+    </div>
+</div>
